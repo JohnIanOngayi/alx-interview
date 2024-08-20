@@ -20,6 +20,9 @@ def minOperations(n: float) -> int:
     Returns:
     int: The minimum number of operations.
     """
+    if n < 1:
+        return 0
+
     return sum(prime_factors(n))
 
 
