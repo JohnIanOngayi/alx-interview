@@ -1,13 +1,13 @@
 #!/usr/bin/node
 
-const request = require("request");
+const request = require('request');
 
 if (process.argv.length < 3) {
-  console.log("Usage: ./0-starwars_characters.js <movie_id>");
+  console.log('Usage: ./0-starwars_characters.js <movie_id>');
   process.exit(1);
 }
-id = process.argv[2];
-url = `https://swapi-api.alx-tools.com/api/films/${id}`;
+const id = process.argv[2];
+const url = `https://swapi-api.alx-tools.com/api/films/${id}`;
 
 request(url, (err, resp, body) => {
   if (err) {
