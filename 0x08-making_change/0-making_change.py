@@ -15,8 +15,8 @@ def makeChange(coins: List[int], total: int) -> int:
         (int) no of coins if total is met
                 else -1 if total is not met or total == 0
     """
-    if total == 0:
-        return -1
+    if total < 1:
+        return 0
     change = [total + 1] * (total + 1)
     change[0] = 0
 
