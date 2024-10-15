@@ -5,7 +5,7 @@ Module uses Sieve of Eratosthenes algorithm to solve prime game problem
 """
 
 
-def isWinner(x: int, nums: list) -> str:
+def isWinner(x, nums):
     """
     returns winner of prime game
 
@@ -38,7 +38,7 @@ def isWinner(x: int, nums: list) -> str:
         return "Ben"
 
 
-def sieveofEratosthenes(n: int) -> list[int]:
+def sieveofEratosthenes(n):
     """
     returns list of prime numbers less than or equal to n
 
@@ -48,7 +48,7 @@ def sieveofEratosthenes(n: int) -> list[int]:
     returns:
     (List[int]) list of prime numbers less than or equal to n
     """
-    prime_nums: list[int] = []
+    prime_nums = []
 
     if n < 2:
         return prime_nums
