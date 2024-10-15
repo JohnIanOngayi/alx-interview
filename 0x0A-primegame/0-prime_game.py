@@ -4,10 +4,8 @@
 Module uses Sieve of Eratosthenes algorithm to solve prime game problem
 """
 
-from typing import List
 
-
-def isWinner(x: int, nums: List[int]) -> str:
+def isWinner(x: int, nums: list) -> str:
     """
     returns winner of prime game
 
@@ -18,22 +16,29 @@ def isWinner(x: int, nums: List[int]) -> str:
     returns:
     (str) Maria | Ben
     """
-    maria_wins: int = 0
-    ben_wins: int = 0
-
     if x != len(nums):
-        return "Error: no. of elements in nums should be equal to x"
+        return None
 
-    for _ in range(x):
-        # if no. of prime numbers is odd, Maria wins
-        if len(sieveofEratosthenes(nums[_])) % 2:
-            maria_wins = maria_wins + 1
+    max_num = max(nums)
+    primes = sieveofEratosthenes(max_num)
+
+    maria_wins = 0
+    ben_wins = 0
+
+    for num in nums:
+        prime_count = sum(1 for p in primes if p <= num)
+        if prime_count % 2 == 1:
+            maria_wins += 1
         else:
-            ben_wins = ben_wins + 1
-    return "Maria" if maria_wins > ben_wins else "Ben"
+            ben_wins += 1
+
+    if maria_wins > ben_wins:
+        return "Maria"
+    else:
+        return "Ben"
 
 
-def sieveofEratosthenes(n: int) -> List[int]:
+def sieveofEratosthenes(n: int) -> list[int]:
     """
     returns list of prime numbers less than or equal to n
 
@@ -43,7 +48,7 @@ def sieveofEratosthenes(n: int) -> List[int]:
     returns:
     (List[int]) list of prime numbers less than or equal to n
     """
-    prime_nums: List[int] = []
+    prime_nums: list[int] = []
 
     if n < 2:
         return prime_nums
